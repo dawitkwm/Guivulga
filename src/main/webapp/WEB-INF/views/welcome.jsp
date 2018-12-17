@@ -23,11 +23,14 @@
       					<a href="<spring:url value='/login' />" class="btn btn-default pull-right"> Login</a>
 					    </c:when>
 					    <c:otherwise>
-		 					<a href="<spring:url value="/users/add" />" class="btn btn-default pull-right">Add User</a>	
-		 					<a href="<spring:url value="/users" />" class="btn btn-default pull-right">User List</a>	
+		 					<a href="<spring:url value="/users/add" />" class="btn btn-default pull-right">Add Customer</a>	
+		 					<a href="<spring:url value="/users" />" class="btn btn-default pull-right">Transfer</a>	
 		 					<br>
-		 					<a href="<spring:url value="items/add" />" class="btn btn-default pull-right">Add Item</a>	
-		 					<a href="<spring:url value="items" />" class="btn btn-default pull-right">Item List</a>	
+		 					<a href="<spring:url value="items/add" />" class="btn btn-default pull-right">Withdraw</a>	
+		 					<a href="<spring:url value="items" />" class="btn btn-default pull-right">Deposit</a>	
+		 					<br>
+		 					<a href="<spring:url value="items/add" />" class="btn btn-default pull-right">Check Balance</a>	
+		 					<a href="<spring:url value="items" />" class="btn btn-default pull-right">Bank Statement</a>	
 		 					<br>
 		 					<a href="<spring:url value='/logout' />" class="btn btn-default pull-right"> Logout</a>
 		 

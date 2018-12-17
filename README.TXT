@@ -1,10 +1,2 @@
-Lab 11 
+Welcome to Guivulga - The Next Generation Money Transfer!
 
-Caveat Emptor Version of MemberSpringMVC demo
-which uses ...Bootstrap
-
-Complete the User related functionality
-Controller, Validation, JSPs
-
-In the welcome JSP complete the URL/links
- 
