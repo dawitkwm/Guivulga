@@ -53,8 +53,8 @@ public class User implements Serializable {
 	@Column(name = "email", nullable = false)
 	private String email;
 
-	@Column(name = "rank", nullable = false)
-	private Integer rating = 0;
+//	@Column(name = "[rank]", nullable = false)
+//	private Integer rating = 0;
 
 	@Column(name = "is_admin", nullable = false)
 	private boolean admin = false;
@@ -114,13 +114,13 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public Integer getRating() {
-		return rating;
-	}
-
-	public void setRating(Integer rating) {
-		this.rating = rating;
-	}
+//	public Integer getRating() {
+//		return rating;
+//	}
+//
+//	public void setRating(Integer rating) {
+//		this.rating = rating;
+//	}
 
 	public boolean isAdmin() {
 		return admin;
