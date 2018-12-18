@@ -1,21 +1,46 @@
 package com.codebus.domain;
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
 public class TranData {
-	private String fromIBAN;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	
+	// Destination info
+	@Column(name = "TO_IBAN", length = 34)
 	private String toIBAN;
 	
-	private String bankName;
+	// Source info
+	@Column(name = "FROM_IBAN", length = 34)
+	private String fromIBAN;
+	@Column(length = 50)
 	private String accountName;
 	
+	// Transaction info
 	private Double amount;
+	@Column(length = 3)
 	private String currency;
+	@Column(length = 100)
 	private String desc;
+	@Temporal(TemporalType.TIMESTAMP)
+	private LocalDateTime date;
 	
-	public String getFromIBAN() {
-		return fromIBAN;
+	public long getId() {
+		return id;
 	}
-	public void setFromIBAN(String fromIBAN) {
-		this.fromIBAN = fromIBAN;
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getToIBAN() {
 		return toIBAN;
@@ -23,11 +48,11 @@ public class TranData {
 	public void setToIBAN(String toIBAN) {
 		this.toIBAN = toIBAN;
 	}
-	public String getBankName() {
-		return bankName;
+	public String getFromIBAN() {
+		return fromIBAN;
 	}
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
+	public void setFromIBAN(String fromIBAN) {
+		this.fromIBAN = fromIBAN;
 	}
 	public String getAccountName() {
 		return accountName;
@@ -53,16 +78,10 @@ public class TranData {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+	public LocalDateTime getDate() {
+		return date;
+	}
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
 }
-
-/**
- * 
- * An example of an IBAN code in at Great Britain’s National Westminster Bank is GB 29 NWBK 601613 31926819
- * 
- * A two-letter country code.
- * A two-digit transaction number.
- * A four-letter bank code.
- * A six-digit bank sort code.
- * A unique number specific to the bank account.
- * 
- */
