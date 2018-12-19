@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.codebus.domain.TranData;
 import com.codebus.domain.Transaction;
+import com.codebus.mts.MoneyTranserService;
 import com.codebus.repository.TransactionRepository;
+import com.codebus.service.AccountService;
 import com.codebus.service.TransactionService;
 
 @Service
@@ -16,10 +18,26 @@ public class TransactionServiceImpl implements TransactionService {
 
 	@Autowired
 	TransactionRepository repo;
+	
+	@Autowired
+	MoneyTranserService transfer;
+	
+	@Autowired
+	AccountService account;
 		
 	@Override
 	public Transaction interCountry(Transaction tran) {
-		// TODO Auto-generated method stub
+		
+		TranData data = new TranData();
+		
+		data.setFromIBAN(account.getIban(tran.getFromAccount()));
+		data.setToIBAN(tran.getToAccount());
+		data.setAmount(tran.getAmount());
+		data.setCurrency(tran.getCurrency());
+		data.setDescription(tran.getDescription());
+		
+		transfer.publish(data);
+		
 		return persist(tran);
 	}
 
@@ -31,7 +49,6 @@ public class TransactionServiceImpl implements TransactionService {
 
 	@Override
 	public Transaction interAccount(Transaction tran) {
-		// TODO Auto-generated method stub
 		return persist(tran);
 	}
 	

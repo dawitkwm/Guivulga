@@ -35,7 +35,7 @@ public class TranData implements Serializable{
 	@Column(length = 3)
 	private String currency;
 	@Column(length = 100)
-	private String desc;
+	private String description;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
@@ -75,11 +75,11 @@ public class TranData implements Serializable{
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String desc) {
+		this.description = desc;
 	}
 	public Date getDate() {
 		return date;
