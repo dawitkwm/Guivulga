@@ -46,7 +46,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public Account updateBalance(Account account, Double amount) throws Exception {
 		if (account.getBalance() + amount < 0)
-			throw new Exception("Balance");
+			throw new Exception("Insufficient fund!");
 		account.setBalance(account.getBalance() + amount);
 		return accountDao.update(account);
 	}
