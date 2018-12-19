@@ -3,7 +3,7 @@ package com.codebus.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.codebus.domain.TranData;
+import com.codebus.domain.Transaction;
 import com.codebus.repository.TransactionRepository;
 import com.codebus.service.TransactionService;
 
@@ -14,24 +14,24 @@ public class TransactionServiceImpl implements TransactionService {
 	TransactionRepository repo;
 		
 	@Override
-	public TranData interCountry(TranData tran) {
+	public Transaction interCountry(Transaction tran) {
 		// TODO Auto-generated method stub
 		return persist(tran);
 	}
 
 	@Override
-	public TranData interBank(TranData tran) {
+	public Transaction interBank(Transaction tran) {
 		// TODO Auto-generated method stub
 		return persist(tran);
 	}
 
 	@Override
-	public TranData interAccount(TranData tran) {
+	public Transaction interAccount(Transaction tran) {
 		// TODO Auto-generated method stub
 		return persist(tran);
 	}
 	
-	private TranData persist(TranData tran) {
+	private Transaction persist(Transaction tran) {
 		return repo.save(tran);
 	}
 }
