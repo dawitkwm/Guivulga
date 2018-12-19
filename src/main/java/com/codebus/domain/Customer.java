@@ -51,7 +51,6 @@ public class Customer implements Serializable{
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "MM/DD/YYYY")
 	@Column(name = "birthday")
 	private Date birthDate;
 
