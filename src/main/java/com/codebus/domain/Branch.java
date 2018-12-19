@@ -1,5 +1,7 @@
 package com.codebus.domain;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
@@ -15,7 +18,10 @@ import javax.validation.Valid;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name = "branch")
-public class Branch {
+public class Branch implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@NotEmpty
 	@Column(name = "branchcode", length = 20)
@@ -24,6 +30,10 @@ public class Branch {
 	@NotEmpty
 	@Column(length = 20)
 	private String phone;
+	
+	@Valid
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private Bank bank;
 
 	@Valid
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -32,7 +42,7 @@ public class Branch {
 
 	@Valid
 	@OneToMany(mappedBy = "branch", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<Account> accounts;
+	private List<Account> accounts = new ArrayList<>();
 
 	public Branch() {
 		super();
