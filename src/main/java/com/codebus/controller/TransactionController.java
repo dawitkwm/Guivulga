@@ -19,6 +19,19 @@ public class TransactionController {
 	
 	@RequestMapping(value = "/account", method = RequestMethod.GET)
 	public String interAccount(@ModelAttribute("tran") TranData tran, Model model) {
-		return "transaction/account";
+		model.addAttribute("transactionType","interAccount");
+		return "transaction/transfer";
+	}
+	
+	@RequestMapping(value = "/bank", method = RequestMethod.GET)
+	public String interBank(@ModelAttribute("tran") TranData tran, Model model) {
+		model.addAttribute("transactionType","interBank");
+		return "transaction/transfer";
+	}
+	
+	@RequestMapping(value = "/country", method = RequestMethod.GET)
+	public String interCountry(@ModelAttribute("tran") TranData tran, Model model) {
+		model.addAttribute("transactionType","interCountry");
+		return "transaction/transfer";
 	}
 }

@@ -3,6 +3,8 @@ package com.codebus.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.codebus.dao.CustomerDao;
 import com.codebus.domain.Account;
@@ -11,6 +13,8 @@ import com.codebus.service.AccountService;
 import com.codebus.service.AddressService;
 import com.codebus.service.CustomerService;
 
+@Service
+@Transactional 
 public class CustomerServiceImpl implements CustomerService{
 
  	@Autowired
