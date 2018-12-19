@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name = "customer")
 public class Customer {
@@ -39,6 +40,7 @@ public class Customer {
 	private String gender;
 
 	@NotNull
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
 
