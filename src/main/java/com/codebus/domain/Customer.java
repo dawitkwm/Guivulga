@@ -1,5 +1,6 @@
 package com.codebus.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -13,15 +14,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name = "customer")
-public class Customer {
+@Table(name = "customer")
+public class Customer implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -39,7 +47,10 @@ public class Customer {
 	private String gender;
 
 	@NotEmpty
+	@Past
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "MM/DD/YYYY")
+	@Column(name = "birthday")
 	private Date birthDate;
 
 	@Valid
