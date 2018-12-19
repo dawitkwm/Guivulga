@@ -30,7 +30,7 @@ public class TransactionController {
 	public String interAccount(@Valid @ModelAttribute("tran") Transaction tran, BindingResult result, Model model) {
 		if (result.hasErrors()) return "transaction";
 		
-		transactionService.interAccount(tran);
+		service.interAccount(tran);
 		
 		return "redirect:/statement";
 	}
