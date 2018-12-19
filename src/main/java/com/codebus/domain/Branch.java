@@ -2,22 +2,41 @@ package com.codebus.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.validation.Valid;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+@Entity(name = "branch")
 public class Branch {
-	
+	@Id
+	@NotEmpty
+	@Column(name = "branchcode", length = 20)
 	private String branchCode;
-	
+
+	@NotEmpty
+	@Column(length = 20)
 	private String phone;
-	
+
+	@Valid
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "address")
 	private Address address;
-	
-	private Bank bank;
-	
+
+	@Valid
+	@OneToMany(mappedBy = "branch", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Account> accounts;
-	
-	public Branch() { 
+
+	public Branch() {
 		super();
 	}
-
 
 	public String getBranchCode() {
 		return branchCode;
@@ -41,14 +60,6 @@ public class Branch {
 
 	public void setAddress(Address address) {
 		this.address = address;
-	}
-
-	public Bank getBank() {
-		return bank;
-	}
-
-	public void setBank(Bank bank) {
-		this.bank = bank;
 	}
 
 	public List<Account> getAccounts() {

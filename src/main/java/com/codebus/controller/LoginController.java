@@ -26,8 +26,14 @@ public class LoginController {
 	
 	@RequestMapping(value="/postLogin", method = RequestMethod.POST)
 	public String PostLogin(UserCredentials credentials, Model model) {
-
-		UserCredentials validCredentials = credentialsService.findByUserName(credentials.getUserName());
+		UserCredentials validCredentials = null;
+		
+		try {
+			validCredentials = credentialsService.findByUserName(credentials.getUserName());
+		} catch (org.springframework.dao.EmptyResultDataAccessException e) {
+			model.addAttribute("error", "true");
+			return  "login";
+		}
  
 		if (validCredentials == null)
 			return  "login";

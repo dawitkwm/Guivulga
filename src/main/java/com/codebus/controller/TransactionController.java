@@ -17,7 +17,7 @@ import com.codebus.service.TransactionService;
 public class TransactionController {
 
 	@Autowired
-	TransactionService service;
+	TransactionService transactionService;
 	
 	@RequestMapping(value = "/transaction", method = RequestMethod.GET)
 	public String interAccount(@ModelAttribute("tran") Transaction tran, Model model) {

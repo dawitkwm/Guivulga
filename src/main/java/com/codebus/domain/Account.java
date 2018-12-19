@@ -1,17 +1,39 @@
 package com.codebus.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+@Entity(name = "account")
 public abstract class Account {
+	@Id
+	@Size(min=10, max=40)
+	@Column(name = "acntno", length = 40)
+	private int accountNo;
+
+	@NotNull
+	@Column(length = 34)
+	private String iban; // international bank account number: country-code + branch-code + accountNumber
+
+	@NotNull
+	@Column
+	private Double balance;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "customer")
 	private Customer customer;
 	
-	private int accountNumber;
-	
-	private String iban; //international bank account number: country-code + branch-code + accountNumber
-	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "branch")
 	private Branch branch;
-	
+
 	public Account() {
-		
+
 	}
 
 	public Customer getCustomer() {
@@ -22,12 +44,12 @@ public abstract class Account {
 		this.customer = customer;
 	}
 
-	public int getAccountNumber() {
-		return accountNumber;
+	public int getAccountNo() {
+		return accountNo;
 	}
 
-	public void setAccountNumber(int accountNumber) {
-		this.accountNumber = accountNumber;
+	public void setAccountNo(int accountNo) {
+		this.accountNo = accountNo;
 	}
 
 	public String getIban() {
@@ -46,5 +68,4 @@ public abstract class Account {
 		this.branch = branch;
 	}
 
-	
 }
