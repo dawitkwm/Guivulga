@@ -14,8 +14,15 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1>Customers</h1>
-				<p>Add Customers</p>
+				<p>Add Customer</p>
 			</div>
+			<nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/BankApp/">Home</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="/BankApp/customers">Customers</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add customer</li>
+                    </ol>
+                </nav>
 		</div>
 	</section>
 	<section class="container">

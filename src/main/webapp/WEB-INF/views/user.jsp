@@ -17,6 +17,13 @@
 			<div class="container">
 				<h1>User Details</h1>
 			</div>
+						<nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/BankApp/">Home</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="/BankApp/users">Users</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">User details</li>
+                    </ol>
+                </nav>
 		</div>
 	</section>
 	<section class="container">
