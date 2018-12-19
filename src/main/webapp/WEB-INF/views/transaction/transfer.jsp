@@ -46,6 +46,16 @@
 				</div>
 
 				<div class="form-group">
+					<label class="control-label col-lg-2" for="amount"><spring:message
+							code="transfer.form.amount.label" /></label>
+					<div class="col-lg-10">
+						<form:input id="amount" path="amount" type="text"
+							class="form:input-large" />
+						<form:errors path="amount" cssClass="text-danger" />
+					</div>
+				</div>
+
+				<div class="form-group">
 					<label class="control-label col-lg-2" for="desc"><spring:message
 							code="transfer.form.desc.label" /></label>
 					<div class="col-lg-10">

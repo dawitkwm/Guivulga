@@ -25,19 +25,19 @@
 							class="btn btn-default pull-right"> Login</a>
 					</c:when>
 					<c:otherwise>
-						<a href="<spring:url value="/users/add" />"
+						<a href="<spring:url value="/customers/add" />"
 							class="btn btn-default pull-right">Add Customer</a>
-						<a href="<spring:url value="/users" />"
-							class="btn btn-default pull-right">Transfer</a>
+						<a href="<spring:url value="/transaction/account" />"
+							class="btn btn-default pull-right">Same bank transfer</a>
 						<br>
-						<a href="<spring:url value="items/add" />"
-							class="btn btn-default pull-right">Withdraw</a>
-						<a href="<spring:url value="items" />"
-							class="btn btn-default pull-right">Deposit</a>
+						<a href="<spring:url value="/transaction/bank" />"
+							class="btn btn-default pull-right">Domestic transfer</a>
+						<a href="<spring:url value="/transaction/country" />"
+							class="btn btn-default pull-right">International transfer</a>
 						<br>
-						<a href="<spring:url value="items/add" />"
+						<a href="<spring:url value="/customers" />"
 							class="btn btn-default pull-right">Check Balance</a>
-						<a href="<spring:url value="items" />"
+						<a href="<spring:url value="/customers/customer" />"
 							class="btn btn-default pull-right">Bank Statement</a>
 						<br>
 						<a href="<spring:url value='/logout' />"
