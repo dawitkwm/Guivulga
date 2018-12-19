@@ -6,10 +6,14 @@ import org.springframework.context.ApplicationContext;
 
 import com.codebus.domain.MtsTranDataEnvelope;
 import com.codebus.domain.TranData;
+import com.codebus.service.TransactionService;
 
 public class MoneyTranserServiceImpl implements MoneyTranserService {
 	@Autowired
 	private ApplicationContext appContext;
+	
+	@Autowired
+	private TransactionService transactionService;
 
 	@Override
 	public void publish(TranData tranData) {
@@ -26,6 +30,7 @@ public class MoneyTranserServiceImpl implements MoneyTranserService {
     	System.out.println("Destination Country: " + countryCodeToName(tranData.getToIBAN().substring(0, 2)));
 //    	System.out.println("Destination bank name: " + tranData.getBankName());
     	System.out.println("Amount: " + tranData.getAmount());
+    	transactionService.receive(tranData);
 		
 	}
 	
