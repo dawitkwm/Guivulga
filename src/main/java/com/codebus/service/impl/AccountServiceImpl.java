@@ -44,11 +44,12 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account updateBalance(Account account, Double amount) throws Exception {
+	public void updateBalance(String accountNo, Double amount) throws Exception {
+		Account account = this.findOne(accountNo);
 		if (account.getBalance() + amount < 0)
 			throw new Exception("Insufficient fund!");
 		account.setBalance(account.getBalance() + amount);
-		return accountDao.update(account);
+		accountDao.update(account);
 	}
 
 	@Override

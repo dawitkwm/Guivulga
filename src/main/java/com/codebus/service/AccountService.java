@@ -14,7 +14,7 @@ public interface AccountService {
 
 	public Account update(Account account);
 
-	public Account updateBalance(Account account, Double amount)  throws Exception;
+	public void updateBalance(String accountNo, Double amount)  throws Exception;
 	
 	public String getIban(String accountNo);
 
