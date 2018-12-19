@@ -38,15 +38,12 @@
 				<h5><spring:message code="addCustomer.form.address.zipcode.label" />: ${customer.address.zipcode}</h5>
 				<h5><spring:message code="addCustomer.form.address.city.label" />: ${customer.address.city}</h5>
 				<%-- <h5><spring:message code="addCustomer.form.address.country.label" />: ${customer.address.country}</h5> --%>
-				
-				<%-- <h5><spring:message code="addCustomer.form.account.accountNo.label" />: ${customer.account.accountNo}</h5>
-				<h5><spring:message code="addCustomer.form.account.balance.label" />: ${customer.account.balance}</h5>
- --%>
+		
  							<p>
 								<a
 									href=" <spring:url value="/customers/customer?id=${customer.id}" /> "
 									class="btn btn-primary"> <span
-									class="glyphicon-info-sign glyphicon" /></span> Details
+									class="glyphicon-info-sign glyphicon" /></span> Account Details
 								</a>
 							</p>
 
