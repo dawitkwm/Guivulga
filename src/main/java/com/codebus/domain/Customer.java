@@ -38,7 +38,7 @@ public class Customer {
 	@Column(length = 1)
 	private String gender;
 
-	@NotEmpty
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
 
