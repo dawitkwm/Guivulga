@@ -2,6 +2,7 @@ package com.codebus.service;
 
 import java.util.List;
 
+import com.codebus.domain.TranData;
 import com.codebus.domain.Transaction;
 
 public interface TransactionService {
@@ -14,6 +15,8 @@ public interface TransactionService {
 	
 	// Between Account
 	public Transaction interAccount(Transaction tran);
+	
+	public void receive(TranData tran);
 	
 	public List<Transaction> statement();
 }
