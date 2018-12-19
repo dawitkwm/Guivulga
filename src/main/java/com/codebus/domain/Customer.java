@@ -48,6 +48,7 @@ public class Customer implements Serializable{
 
 	@NotEmpty
 	@Past
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "MM/DD/YYYY")
 	@Column(name = "birthday")

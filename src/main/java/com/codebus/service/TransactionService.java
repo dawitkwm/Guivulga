@@ -1,15 +1,15 @@
 package com.codebus.service;
 
-import com.codebus.domain.TranData;
+import com.codebus.domain.Transaction;
 
 public interface TransactionService {
 	
 	// International
-	public TranData interCountry(TranData tran);
+	public Transaction interCountry(Transaction tran);
 	
 	// Between Bank
-	public TranData interBank(TranData tran);
+	public Transaction interBank(Transaction tran);
 	
 	// Between Account
-	public TranData interAccount(TranData tran);
+	public Transaction interAccount(Transaction tran);
 }
