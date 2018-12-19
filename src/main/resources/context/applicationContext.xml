@@ -71,41 +71,36 @@
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 	<!-- *********** Connecting To RabbitMQ ***************** -->
-	<rabbit:connection-factory
+	<!-- <rabbit:connection-factory
 		id="connectionFactory" host="localhost" username="guest"
-		password="guest" />
-
+		password="guest" /> -->
+	
+	<rabbit:connection-factory
+		id="connectionFactory" host="mosquito.rmq.cloudamqp.com"
+		virtual-host="zsunakgf" username="zsunakgf"
+		password="usEOro2i-kvGHmWB2TIdMdv75eyE2JCn" />
+		
 	<rabbit:admin connection-factory="connectionFactory" />
 
-	<!-- *********** ITEM - DIRECT EXCHANGE ***************** -->
-	<rabbit:queue name="directQueue" durable="true" />
 
-	<rabbit:direct-exchange
-		name="directItemExchange" durable="true">
-		<rabbit:bindings>
-			<rabbit:binding queue="directQueue" key="direct.item"></rabbit:binding>
-		</rabbit:bindings>
-	</rabbit:direct-exchange>
-
-
-
-
-	<!-- *********** DIRECT PRODUCER ***************** -->
-
-	<!-- A producer that publishes using "direct.item" as a routing key. The 
-		exchange then binds it the queue directQueue -->
-	<rabbit:template id="directTemplate"
-		connection-factory="connectionFactory" reply-timeout="2000"
-		routing-key="direct.item" exchange="directItemExchange" />
+	<!-- *********** PRODUCER ***************** -->
+	<rabbit:template id="mtsRabbitTemplate"
+		connection-factory="connectionFactory" reply-timeout="5000" />
 		
-	<!-- **************** ANSWER CONSUMER ************************* -->
+	<!-- **************** CONSUMER ************************* -->
 	<rabbit:listener-container
 		connection-factory="connectionFactory">
-		<rabbit:listener ref="queueListener" method="listen"
-			queue-names="answerQueue" />
+		<rabbit:listener ref="directQueueListener" method="listen"
+			queue-names="usBankOneDirectQueue" />
+		<rabbit:listener ref="directQueueListener" method="listen"
+			queue-names="usBankTwoDirectQueue" />
+		<rabbit:listener ref="directQueueListener" method="listen"
+			queue-names="mnBankOneDirectQueue" />
+		<rabbit:listener ref="directQueueListener" method="listen"
+			queue-names="etBankOneDirectQueue" />
 	</rabbit:listener-container>
 
-	<bean id="queueListener" class="com.codebus.amqp.MoneyTranserServiceImpl" />
+	<bean id="directQueueListener" class="com.codebus.mts.MoneyTranserServiceImpl" />
 
 
 

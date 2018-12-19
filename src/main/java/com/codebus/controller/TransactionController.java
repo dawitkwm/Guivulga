@@ -1,5 +1,7 @@
 package com.codebus.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,7 @@ import com.codebus.service.TransactionService;
 public class TransactionController {
 
 	@Autowired
-	TransactionService transactionService;
+	TransactionService service;
 	
 	@RequestMapping(value = "/transaction", method = RequestMethod.GET)
 	public String interAccount(@ModelAttribute("tran") Transaction tran, Model model) {
@@ -28,7 +30,17 @@ public class TransactionController {
 	public String interAccount(@Valid @ModelAttribute("tran") Transaction tran, BindingResult result, Model model) {
 		if (result.hasErrors()) return "transaction";
 		
-		service.interAccount(tran);
+		transactionService.interAccount(tran);
+		
+		return "redirect:/statement";
+	}
+	
+	@RequestMapping(value = "/statement", method = RequestMethod.GET)
+	public String statement(Model model) {
+		
+		List<Transaction> trans = service.statement();
+		
+		model.addAttribute("trans", trans);
 		
 		return "statement";
 	}

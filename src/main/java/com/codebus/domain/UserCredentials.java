@@ -1,5 +1,6 @@
 package com.codebus.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name = "Authentication")
 @Table(name = "AUTHENTICATION")
-public class UserCredentials {
+public class UserCredentials implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "USER", nullable = false, unique = true, length = 127)

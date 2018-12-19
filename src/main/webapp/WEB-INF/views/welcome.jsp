@@ -25,29 +25,27 @@
 							class="btn btn-default pull-right"> Login</a>
 					</c:when>
 					<c:otherwise>
-						<a href="<spring:url value="/customers/add" />"
-							class="btn btn-default pull-right">Add Customer</a>
-						<a href="<spring:url value="/transaction/account" />"
-							class="btn btn-default pull-right">Same bank transfer</a>
+							<a href="<spring:url value="/customers" />"
+								class="btn btn-default pull-right">Customer management</a>
+							<a href="<spring:url value="/customers/add" />"
+								class="btn btn-default pull-right">Add Customer</a>
 						<br>
-						<a href="<spring:url value="/transaction/bank" />"
-							class="btn btn-default pull-right">Domestic transfer</a>
-						<a href="<spring:url value="/transaction/country" />"
-							class="btn btn-default pull-right">International transfer</a>
+							<a href="<spring:url value="/transaction/account" />"
+								class="btn btn-default pull-right">Same bank transfer</a>
+							<br>
+							<a href="<spring:url value="/transaction/bank" />"
+								class="btn btn-default pull-right">Domestic transfer</a>
+							<a href="<spring:url value="/transaction/country" />"
+								class="btn btn-default pull-right">International transfer</a>
 						<br>
-						<a href="<spring:url value="/customers" />"
-							class="btn btn-default pull-right">Check Balance</a>
-						<a href="<spring:url value="/customers/customer" />"
-							class="btn btn-default pull-right">Bank Statement</a>
+							<a href="<spring:url value="/users" />"
+								class="btn btn-default pull-right">
+								User management</a>
 						<br>
-						<a href="<spring:url value='/logout' />"
-							class="btn btn-default pull-right"> Logout</a>
-
+							<a href="<spring:url value='/logout' />"
+								class="btn btn-default pull-right"> Logout</a>
 					</c:otherwise>
 				</c:choose>
-				<a href="<spring:url value='/users' />" class="btn btn-default">
-					<span class="glyphicon-hand-left glyphicon"></span> Go to Community
-				</a>
 			</div>
 			<div class="pull-left">
 				<h3>${SpecialBlurb}</h3>
