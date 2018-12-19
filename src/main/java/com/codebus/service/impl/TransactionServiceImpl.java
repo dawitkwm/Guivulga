@@ -36,6 +36,8 @@ public class TransactionServiceImpl implements TransactionService {
 		data.setCurrency(tran.getCurrency());
 		data.setDescription(tran.getDescription());
 		
+		System.out.println("TO IBAN: " + data.getToIBAN());
+		
 		transfer.publish(data);
 		
 		return persist(tran);
