@@ -1,5 +1,8 @@
 package com.codebus.service.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,13 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 	
 	private Transaction persist(Transaction tran) {
+		tran.setDate(new Date());
+		
 		return repo.save(tran);
+	}
+
+	@Override
+	public List<Transaction> statement() {
+		return (List<Transaction>) repo.findAll();
 	}
 }
