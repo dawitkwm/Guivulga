@@ -57,6 +57,14 @@ public abstract class Account implements Serializable{
 		this.accountNo = accountNo;
 	}
 
+	public Double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
 	public String getIban() {
 		return iban;
 	}

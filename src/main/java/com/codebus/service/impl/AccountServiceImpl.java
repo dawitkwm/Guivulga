@@ -11,7 +11,7 @@ import com.codebus.domain.Account;
 import com.codebus.service.AccountService;
 
 @Service
-@Transactional 
+@Transactional
 public class AccountServiceImpl implements AccountService {
 
 	@Autowired
@@ -41,6 +41,19 @@ public class AccountServiceImpl implements AccountService {
 	public void saveFull(Account account) {
 		accountDao.save(account);
 
+	}
+
+	@Override
+	public Account updateBalance(Account account, Double amount) throws Exception {
+		if (account.getBalance() + amount < 0)
+			throw new Exception("Balance");
+		account.setBalance(account.getBalance() + amount);
+		return accountDao.update(account);
+	}
+
+	@Override
+	public String getIban(String accountNo) {
+		return this.findOne(accountNo).getIban();
 	}
 
 }
