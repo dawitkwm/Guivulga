@@ -90,14 +90,14 @@
 	<!-- **************** CONSUMER ************************* -->
 	<rabbit:listener-container
 		connection-factory="connectionFactory">
-		<rabbit:listener ref="directQueueListener" method="listen"
+		<!-- <rabbit:listener ref="directQueueListener" method="listen"
 			queue-names="usBankOneDirectQueue" />
 		<rabbit:listener ref="directQueueListener" method="listen"
-			queue-names="usBankTwoDirectQueue" />
+			queue-names="usBankTwoDirectQueue" /> -->
 		<rabbit:listener ref="directQueueListener" method="listen"
 			queue-names="mnBankOneDirectQueue" />
-		<rabbit:listener ref="directQueueListener" method="listen"
-			queue-names="etBankOneDirectQueue" />
+		<!-- <rabbit:listener ref="directQueueListener" method="listen"
+			queue-names="etBankOneDirectQueue" /> -->
 	</rabbit:listener-container>
 
 	<bean id="directQueueListener" class="com.codebus.mts.MoneyTranserServiceImpl" />
