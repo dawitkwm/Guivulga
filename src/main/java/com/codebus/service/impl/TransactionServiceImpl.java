@@ -31,7 +31,7 @@ public class TransactionServiceImpl implements TransactionService {
 		TranData data = new TranData();
 		
 		data.setFromIBAN(account.getIban(tran.getFromAccount()));
-		data.setToIBAN(tran.getToAccount());
+		data.setToIBAN(account.getIban(tran.getToAccount()));
 		data.setAmount(tran.getAmount());
 		data.setCurrency(tran.getCurrency());
 		data.setDescription(tran.getDescription());
