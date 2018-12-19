@@ -44,7 +44,7 @@ public class CustomerController {
 	@RequestMapping(value = "/customer", method = RequestMethod.GET)
 	public String getUserById(Model model, @RequestParam("id") Long id) {
 		Customer customer = customerService.findOne(id);
-		model.addAttribute("user", customer);
+		model.addAttribute("customer", customer);
 		return "customer/customer";
 	}
 
