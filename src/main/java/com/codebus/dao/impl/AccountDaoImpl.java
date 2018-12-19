@@ -16,7 +16,7 @@ public class AccountDaoImpl extends GenericDaoImpl<Account> implements AccountDa
 	
 	public Account findByAccountNo(String accountNo) {
 	     
-		Query query = entityManager.createQuery("select a from Account a  where a.accountNo = :acntno");
+		Query query = entityManager.createQuery("select a from account a  where a.accountNo = :acntno");
 		return (Account) query.setParameter("acntno", accountNo).getSingleResult();
 
 	}
