@@ -55,18 +55,33 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 	
 	@Override
-	public void receive(TranData tran) {
+	public void receive(TranData data) {
 		System.out.println("Received Money !!!!");
+		
+		// us-bankone-branchone-1000000000
+		
+		String[] toInfo = data.getToIBAN().split("-");
+		String[] fromInfo = data.getFromIBAN().split("-");
+		
+		Transaction tran = new Transaction();
+		tran.setToAccount(toInfo[3]);
+		tran.setToBank(toInfo[1]);
+		tran.setToCountry(toInfo[0]);
+		tran.setFromAccount(fromInfo[3]);
+		tran.setAmount(data.getAmount());
+		tran.setDescription(data.getDescription());
+		
+		interAccount(tran);
+	}
+
+	@Override
+	public List<Transaction> statement() {
+		return (List<Transaction>) repo.findAll();
 	}
 	
 	private Transaction persist(Transaction tran) {
 		tran.setDate(new Date());
 		
 		return repo.save(tran);
-	}
-
-	@Override
-	public List<Transaction> statement() {
-		return (List<Transaction>) repo.findAll();
 	}
 }

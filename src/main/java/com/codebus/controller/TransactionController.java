@@ -1,6 +1,8 @@
 package com.codebus.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -23,11 +25,20 @@ public class TransactionController {
 	
 	@RequestMapping(value = "/transaction", method = RequestMethod.GET)
 	public String interAccount(@ModelAttribute("tran") Transaction tran, Model model) {
+		
+		Map<String, String> countries = new HashMap<String, String>();
+		countries.put("United States", "us");
+		countries.put("Mongolia", "mn");
+		countries.put("Ethiopia", "et");
+		
+		model.addAttribute("countries", countries);
+		
 		return "transaction";
 	}
 	
 	@RequestMapping(value = "/transaction", method = RequestMethod.POST)
 	public String interAccount(@Valid @ModelAttribute("tran") Transaction tran, BindingResult result, Model model) {
+		
 		if (result.hasErrors()) return "transaction";
 		
 		service.interCountry(tran);

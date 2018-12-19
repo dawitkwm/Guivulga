@@ -26,17 +26,21 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
+							<th scope="col">Transaction Date</th>
 							<th scope="col">From Account</th>
 							<th scope="col">To Account</th>
 							<th scope="col">Amount</th>
+							<th scope="col">Description</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${trans}" var="tran">
 							<tr>
+								<td>${tran.date}</td>
 								<td>${tran.fromAccount}</td>
 								<td>${tran.toAccount}</td>
 								<td>${tran.amount}</td>
+								<td>${tran.description}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

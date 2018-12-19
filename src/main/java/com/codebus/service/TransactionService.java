@@ -16,7 +16,7 @@ public interface TransactionService {
 	// Between Account
 	public Transaction interAccount(Transaction tran);
 	
-	public void receive(TranData tran);
+	public void receive(TranData data);
 	
 	public List<Transaction> statement();
 }
