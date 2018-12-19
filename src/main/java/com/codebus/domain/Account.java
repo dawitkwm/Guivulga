@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity(name = "account")
-public abstract class Account implements Serializable{
+public class Account implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
