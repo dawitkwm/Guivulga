@@ -12,8 +12,8 @@
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>${greeting}</h1>
-				<p>${tagline}</p>
+				<h1><spring:message code="greeting" /></h1>
+				<p><spring:message code="tagline" /></p>
 				Welcome ${user.firstName} !
 
 			</div>
@@ -30,13 +30,8 @@
 							<a href="<spring:url value="/customers/add" />"
 								class="btn btn-default pull-right">Add Customer</a>
 						<br>
-							<a href="<spring:url value="/transaction/account" />"
-								class="btn btn-default pull-right">Same bank transfer</a>
-							<br>
-							<a href="<spring:url value="/transaction/bank" />"
-								class="btn btn-default pull-right">Domestic transfer</a>
-							<a href="<spring:url value="/transaction/country" />"
-								class="btn btn-default pull-right">International transfer</a>
+							<a href="<spring:url value="/transaction" />"
+								class="btn btn-default pull-right">Money transfer</a>
 						<br>
 							<a href="<spring:url value="/users" />"
 								class="btn btn-default pull-right">
