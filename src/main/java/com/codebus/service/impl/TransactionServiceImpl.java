@@ -81,6 +81,13 @@ public class TransactionServiceImpl implements TransactionService {
 	private Transaction persist(Transaction tran) {
 		tran.setDate(new Date());
 		
+		try {
+			account.updateBalance(tran.getFromAccount(), Double.valueOf(tran.getAmount()));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return repo.save(tran);
 	}
 }

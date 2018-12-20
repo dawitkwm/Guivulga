@@ -29,6 +29,7 @@
 							<th scope="col">Transaction Date</th>
 							<th scope="col">From Account</th>
 							<th scope="col">To Account</th>
+							<th scope="col">To Bank</th>
 							<th scope="col">Amount</th>
 							<th scope="col">Description</th>
 						</tr>
@@ -39,6 +40,7 @@
 								<td>${tran.date}</td>
 								<td>${tran.fromAccount}</td>
 								<td>${tran.toAccount}</td>
+								<td>${tran.toBank} ${tran.toCountry}</td>
 								<td>${tran.amount}</td>
 								<td>${tran.description}</td>
 							</tr>
