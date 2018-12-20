@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.codebus.domain.Bank;
 import com.codebus.domain.Transaction;
+import com.codebus.service.BankService;
 import com.codebus.service.TransactionService;
 
 @Controller
@@ -23,15 +25,21 @@ public class TransactionController {
 	@Autowired
 	TransactionService service;
 	
+	@Autowired
+	BankService bankService;
+	
 	@RequestMapping(value = "/transaction", method = RequestMethod.GET)
 	public String interAccount(@ModelAttribute("tran") Transaction tran, Model model) {
 		
 		Map<String, String> countries = new HashMap<String, String>();
-		countries.put("United States", "us");
-		countries.put("Mongolia", "mn");
-		countries.put("Ethiopia", "et");
+		countries.put("us", "United States");
+		countries.put("mn", "Mongolia");
+		countries.put("et", "Ethiopia");
 		
 		model.addAttribute("countries", countries);
+		
+		List<Bank> banks = bankService.findAll();
+		model.addAttribute("banks", banks);
 		
 		return "transaction";
 	}
@@ -39,7 +47,19 @@ public class TransactionController {
 	@RequestMapping(value = "/transaction", method = RequestMethod.POST)
 	public String interAccount(@Valid @ModelAttribute("tran") Transaction tran, BindingResult result, Model model) {
 		
-		if (result.hasErrors()) return "transaction";
+		if (result.hasErrors()) {
+			Map<String, String> countries = new HashMap<String, String>();
+			countries.put("us", "United States");
+			countries.put("mn", "Mongolia");
+			countries.put("et", "Ethiopia");
+			
+			model.addAttribute("countries", countries);
+			
+			List<Bank> banks = bankService.findAll();
+			model.addAttribute("banks", banks);
+			
+			return "transaction";
+		}
 		
 		service.interCountry(tran);
 		

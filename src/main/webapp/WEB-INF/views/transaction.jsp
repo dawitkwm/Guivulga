@@ -16,12 +16,12 @@
 				<h1>Money transfer</h1>
 				<p>Money transfer transaction</p>
 			</div>
-						<nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/BankApp/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Transaction</li>
-                    </ol>
-                </nav>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/BankApp/">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Transaction</li>
+				</ol>
+			</nav>
 		</div>
 	</section>
 	<section class="container">
@@ -30,7 +30,7 @@
 				<legend>Money transfer</legend>
 
 				<form:errors path="*" cssClass="alert alert-danger" element="div" />
-				
+
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="fromAccount"><spring:message
 							code="transaction.form.fromAccount.label" /></label>
@@ -55,7 +55,9 @@
 					<label class="control-label col-lg-2" for="toBank"><spring:message
 							code="transaction.form.toBank.label" /></label>
 					<div class="col-lg-10">
-						<form:input id="toBank" path="toBank" type="text"
+						<form:select id="toBank" path="toBank" items="${banks}"
+							itemValue="bic"
+							itemLabel="name"
 							class="form:input-large" />
 						<form:errors path="toBank" cssClass="text-danger" />
 					</div>
@@ -65,7 +67,7 @@
 					<label class="control-label col-lg-2" for="toCountry"><spring:message
 							code="transaction.form.toCountry.label" /></label>
 					<div class="col-lg-10">
-						<form:input id="toCountry" path="toCountry" type="text"
+						<form:select id="toCountry" path="toCountry" items="${countries}"
 							class="form:input-large" />
 						<form:errors path="toCountry" cssClass="text-danger" />
 					</div>
