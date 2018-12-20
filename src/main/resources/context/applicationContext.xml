@@ -82,7 +82,6 @@
 		
 	<rabbit:admin connection-factory="connectionFactory" />
 
-
 	<!-- *********** PRODUCER ***************** -->
 	<rabbit:template id="mtsRabbitTemplate"
 		connection-factory="connectionFactory" reply-timeout="5000" />
