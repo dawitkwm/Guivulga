@@ -31,7 +31,7 @@ public class MoneyTranserServiceImpl implements MoneyTranserService {
     	System.out.println("Destination Country: " + countryCodeToName(tranData.getToIBAN().substring(0, 2)));
 //    	System.out.println("Destination bank name: " + tranData.getBankName());
     	System.out.println("Amount: " + tranData.getAmount());
-    	//transactionService.receive(tranData);
+    	transactionService.receive(tranData);
 		
 	}
 	
