@@ -35,7 +35,7 @@ public class TransactionServiceImpl implements TransactionService {
 		data.setToIBAN(account.getIban(tran.getToAccount()));
 		data.setAmount(tran.getAmount());
 		data.setCurrency(tran.getCurrency());
-		data.setDescription(tran.getDescription());
+		data.setDesc(tran.getDescription());
 		
 		System.out.println("TO IBAN: " + data.getToIBAN());
 		
@@ -70,7 +70,7 @@ public class TransactionServiceImpl implements TransactionService {
 		tran.setToCountry(toInfo[0]);
 		tran.setFromAccount(fromInfo[3]);
 		tran.setAmount(data.getAmount());
-		tran.setDescription(data.getDescription());
+		tran.setDescription(data.getDesc());
 		
 		interAccount(tran);
 	}

@@ -11,40 +11,22 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
 public class TranData implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	
 	// Destination info
-	@Column(name = "TO_IBAN", length = 34)
 	private String toIBAN;
 	
 	// Source info
-	@Column(name = "FROM_IBAN", length = 34)
 	private String fromIBAN;
-	@Column(length = 50)
 	private String accountName;
 	
 	// Transaction info
 	private Double amount;
-	@Column(length = 3)
 	private String currency;
-	@Column(length = 100)
-	private String description;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
+	private String desc;
 	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public String getToIBAN() {
 		return toIBAN;
 	}
@@ -75,16 +57,10 @@ public class TranData implements Serializable{
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-	public String getDescription() {
-		return description;
+	public String getDesc() {
+		return desc;
 	}
-	public void setDescription(String desc) {
-		this.description = desc;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 }
