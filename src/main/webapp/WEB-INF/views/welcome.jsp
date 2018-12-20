@@ -32,6 +32,8 @@
 						<br>
 							<a href="<spring:url value="/transaction" />"
 								class="btn btn-default pull-right">Money transfer</a>
+							<a href="<spring:url value="/statement" />"
+								class="btn btn-default pull-right">Statement</a>
 						<br>
 							<a href="<spring:url value="/users" />"
 								class="btn btn-default pull-right">
