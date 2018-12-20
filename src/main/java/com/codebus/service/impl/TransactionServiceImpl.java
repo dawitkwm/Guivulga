@@ -41,6 +41,8 @@ public class TransactionServiceImpl implements TransactionService {
 		
 		transfer.publish(data);
 		
+		tran.setAmount(tran.getAmount() * -1);
+		
 		return persist(tran);
 	}
 
