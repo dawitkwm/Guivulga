@@ -93,10 +93,10 @@
 			queue-names="usBankOneDirectQueue" />
 		<rabbit:listener ref="directQueueListener" method="listen"
 			queue-names="usBankTwoDirectQueue" /> -->
-		<rabbit:listener ref="directQueueListener" method="listen"
-			queue-names="mnBankOneDirectQueue" />
 		<!-- <rabbit:listener ref="directQueueListener" method="listen"
-			queue-names="etBankOneDirectQueue" /> -->
+			queue-names="mnBankOneDirectQueue" /> -->
+		<rabbit:listener ref="directQueueListener" method="listen"
+			queue-names="etBankOneDirectQueue" />
 	</rabbit:listener-container>
 
 	<bean id="directQueueListener" class="com.codebus.mts.MoneyTranserServiceImpl" />

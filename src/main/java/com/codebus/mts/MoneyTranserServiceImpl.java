@@ -3,15 +3,12 @@ package com.codebus.mts;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
 
 import com.codebus.domain.MtsTranDataEnvelope;
 import com.codebus.domain.TranData;
 import com.codebus.service.TransactionService;
 
 public class MoneyTranserServiceImpl implements MoneyTranserService {
-	@Autowired
-	private ApplicationContext appContext;
 	
 	@Autowired
 	private TransactionService transactionService;
@@ -19,7 +16,7 @@ public class MoneyTranserServiceImpl implements MoneyTranserService {
 	@Autowired
 	@Qualifier("mtsRabbitTemplate")
 	RabbitTemplate mtsRabbitTemplate;
-
+	
 	@Override
 	public void publish(TranData tranData) {
 
