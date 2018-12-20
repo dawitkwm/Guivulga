@@ -46,7 +46,6 @@ public class Customer implements Serializable{
 	@Column(length = 1)
 	private String gender;
 
-	@NotEmpty
 	@Past
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
