@@ -20,7 +20,7 @@ public class MoneyTranserServiceImpl implements MoneyTranserService {
 	@Override
 	public void publish(TranData tranData) {
 
-        mtsRabbitTemplate.convertAndSend("mtsDirectExchange", "codebus.guivulga.key", tranData);
+        mtsRabbitTemplate.convertAndSend("mtsFanoutExchange", "", tranData);
 	}
 
 	@Override
