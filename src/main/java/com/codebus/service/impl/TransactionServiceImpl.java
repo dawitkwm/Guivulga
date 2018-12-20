@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.codebus.domain.TranData;
@@ -55,9 +56,7 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 	
 	@Override
-	public void receive(TranData data) {
-		System.out.println("Received Money !!!!");
-		
+	public void receive(TranData data) {		
 		// us-bankone-branchone-1000000000
 		
 		String[] toInfo = data.getToIBAN().split("-");
@@ -75,7 +74,7 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Override
-	public List<Transaction> statement() {
+	public List<Transaction> statement() {		
 		return (List<Transaction>) repo.findAll();
 	}
 	

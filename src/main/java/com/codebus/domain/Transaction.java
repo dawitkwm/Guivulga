@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "tran_data")
@@ -20,20 +23,24 @@ public class Transaction {
 	private long id;
 	
 	// Destination info
+//	@NotEmpty
 	private String toAccount;
+//	@NotEmpty
 	private String toBank;
+//	@NotEmpty
 	private String toCountry;
 	
 	// Source info
+//	@NotEmpty
 	private String fromAccount;
-	@Column(length = 50)
-	private String accountName;
 	
 	// Transaction info
+//	@NotNull
 	private Double amount;
 	@Column(length = 3)
 	private String currency;
 	@Column(length = 100)
+//	@NotEmpty
 	private String description;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
@@ -67,12 +74,6 @@ public class Transaction {
 	}
 	public void setFromAccount(String fromAccount) {
 		this.fromAccount = fromAccount;
-	}
-	public String getAccountName() {
-		return accountName;
-	}
-	public void setAccountName(String accountName) {
-		this.accountName = accountName;
 	}
 	public Double getAmount() {
 		return amount;

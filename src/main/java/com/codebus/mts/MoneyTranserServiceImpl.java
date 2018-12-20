@@ -2,6 +2,7 @@ package com.codebus.mts;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 
 import com.codebus.domain.MtsTranDataEnvelope;
@@ -14,10 +15,13 @@ public class MoneyTranserServiceImpl implements MoneyTranserService {
 	
 	@Autowired
 	private TransactionService transactionService;
+	
+	@Autowired
+	@Qualifier("mtsRabbitTemplate")
+	RabbitTemplate mtsRabbitTemplate;
 
 	@Override
 	public void publish(TranData tranData) {
-        RabbitTemplate mtsRabbitTemplate = appContext.getBean("mtsRabbitTemplate", RabbitTemplate.class);
 
         mtsRabbitTemplate.convertAndSend("mtsDirectExchange", "codebus.guivulga.key", tranData);
 	}
@@ -30,7 +34,7 @@ public class MoneyTranserServiceImpl implements MoneyTranserService {
     	System.out.println("Destination Country: " + countryCodeToName(tranData.getToIBAN().substring(0, 2)));
 //    	System.out.println("Destination bank name: " + tranData.getBankName());
     	System.out.println("Amount: " + tranData.getAmount());
-    	transactionService.receive(tranData);
+    	//transactionService.receive(tranData);
 		
 	}
 	
