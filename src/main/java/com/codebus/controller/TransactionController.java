@@ -31,12 +31,7 @@ public class TransactionController {
 	@RequestMapping(value = "/transaction", method = RequestMethod.GET)
 	public String interAccount(@ModelAttribute("tran") Transaction tran, Model model) {
 		
-		Map<String, String> countries = new HashMap<String, String>();
-		countries.put("us", "United States");
-		countries.put("mn", "Mongolia");
-		countries.put("et", "Ethiopia");
-		
-		model.addAttribute("countries", countries);
+		model.addAttribute("countries", countries());
 		
 		List<Bank> banks = bankService.findAll();
 		model.addAttribute("banks", banks);
@@ -48,12 +43,7 @@ public class TransactionController {
 	public String interAccount(@Valid @ModelAttribute("tran") Transaction tran, BindingResult result, Model model) {
 		
 		if (result.hasErrors()) {
-			Map<String, String> countries = new HashMap<String, String>();
-			countries.put("us", "United States");
-			countries.put("mn", "Mongolia");
-			countries.put("et", "Ethiopia");
-			
-			model.addAttribute("countries", countries);
+			model.addAttribute("countries", countries());
 			
 			List<Bank> banks = bankService.findAll();
 			model.addAttribute("banks", banks);
@@ -74,5 +64,15 @@ public class TransactionController {
 		model.addAttribute("trans", trans);
 		
 		return "statement";
+	}
+	
+	private Map<String, String> countries() {
+		Map<String, String> countries = new HashMap<String, String>();
+		
+		countries.put("us", "United States");
+		countries.put("mn", "Mongolia");
+		countries.put("et", "Ethiopia");
+		
+		return countries;
 	}
 }

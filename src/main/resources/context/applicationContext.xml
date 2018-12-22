@@ -71,14 +71,9 @@
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 	<!-- *********** Connecting To RabbitMQ ***************** -->
-	<!-- <rabbit:connection-factory
-		id="connectionFactory" host="172.19.141.212" username="guest"
-		password="guest" /> -->
-	
 	<rabbit:connection-factory
-		id="connectionFactory" host="mosquito.rmq.cloudamqp.com"
-		virtual-host="zsunakgf" username="zsunakgf"
-		password="usEOro2i-kvGHmWB2TIdMdv75eyE2JCn" />
+		id="connectionFactory" host="localhost" username="guest"
+		password="guest" />
 		
 	<rabbit:admin connection-factory="connectionFactory" />
 
@@ -86,7 +81,7 @@
 	<rabbit:template id="mtsRabbitTemplate"
 		connection-factory="connectionFactory" reply-timeout="5000" />
 		
-	<!-- **************** CONSUMER ************************* -->
+	<!-- *********** CONSUMER ***************** -->
 	<rabbit:listener-container
 		connection-factory="connectionFactory">
 		<!-- <rabbit:listener ref="directQueueListener" method="listen"
@@ -100,7 +95,5 @@
 	</rabbit:listener-container>
 
 	<bean id="directQueueListener" class="com.codebus.mts.MoneyTranserServiceImpl" />
-
-
 
 </beans>

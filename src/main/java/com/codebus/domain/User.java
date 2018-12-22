@@ -2,10 +2,7 @@ package com.codebus.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,9 +48,6 @@ public class User implements Serializable {
 	@Column(name = "email", nullable = false)
 	private String email;
 
-//	@Column(name = "[rank]", nullable = false)
-//	private Integer rating = 0;
-
 	@Column(name = "is_admin", nullable = false)
 	private boolean admin = false;
 
@@ -64,13 +58,6 @@ public class User implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "user")
 	private List<Address> addresses = new ArrayList<Address>();
-
-	/*
-	 * @OneToMany(mappedBy = "seller") private Collection<Item> itemsForSale = new
-	 * ArrayList<Item>();
-	 */
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	private Set<Item> boughtItems = new HashSet<Item>();
 
 	public Long getId() {
 		return id;
@@ -112,14 +99,6 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-//	public Integer getRating() {
-//		return rating;
-//	}
-//
-//	public void setRating(Integer rating) {
-//		this.rating = rating;
-//	}
-
 	public boolean isAdmin() {
 		return admin;
 	}
@@ -142,18 +121,6 @@ public class User implements Serializable {
 
 	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
-	}
-
-	public Set<Item> getBoughtItems() {
-		return boughtItems;
-	}
-
-	public void setBoughtItems(Set<Item> boughtItems) {
-		this.boughtItems = boughtItems;
-	}
-
-	public void addBoughtItem(Item boughtItem) {
-		this.boughtItems.add(boughtItem);
 	}
 
 	public void addAddress(Address address) {
